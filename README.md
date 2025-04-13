@@ -2,6 +2,10 @@
 
 # AutoalkatreszWebshop
 
+Kedves Javitó(k)!
+
+Valamely oldalak direkt nincsenek még teljesen megvalósítva, majd a 2. mérföldköre lesznek készek.
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.6.
 
 ## Development server
