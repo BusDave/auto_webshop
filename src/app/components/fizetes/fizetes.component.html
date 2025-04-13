@@ -1,1 +1,62 @@
-<p>fizetes works!</p>
+<div class="checkout-container">
+    <h1>Fizetés</h1>
+  
+    <div class="order-summary">
+      <h2>Rendelés összegzése</h2>
+      <table class="order-table">
+        <thead>
+          <tr>
+            <th>Termék képe</th>
+            <th>Termék</th>
+            <th>Egységár</th>
+            <th>Mennyiség</th>
+            <th>Összesen</th>
+            <th>Művelet</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cart">
+            <td><img [src]="item.image" alt="{{ item.name }}" class="cart-item-image" /></td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.price | currency: 'HUF ' }}</td>
+            <td>
+              <button class="quantity-btn" (click)="decreaseQuantity(item)">−</button>
+              {{ item.quantity }}
+              <button class="quantity-btn" (click)="increaseQuantity(item)">+</button>
+            </td>
+            <td>{{ item.price * item.quantity | currency: 'HUF ' }}</td>
+            <td>
+              <button class="delete-btn" (click)="removeItem(item)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="total">
+        <h3>Bruttó végösszeg: {{ calculateTotal() | currency: 'HUF ' }}</h3>
+      </div>
+    </div>
+  
+    <button class="payment-button" (click)="openPaymentModal()">Fizetés</button>
+  
+    <div class="modal-overlay" *ngIf="showModal"></div>
+    <div class="modal" *ngIf="showModal">
+      <h2>Fizetési adatok</h2>
+      <label for="name">Név:</label>
+      <input type="text" id="name" [(ngModel)]="paymentData.name" />
+  
+      <label for="card">Bankkártya száma:</label>
+      <input type="text" id="card" [(ngModel)]="paymentData.cardNumber" />
+  
+      <label for="expiry">Lejárati dátum:</label>
+      <input type="text" id="expiry" [(ngModel)]="paymentData.expiryDate" placeholder="MM/YY" />
+  
+      <label for="cvv">CVV:</label>
+      <input type="text" id="cvv" [(ngModel)]="paymentData.cvv" />
+  
+      <button class="confirm-payment-button" (click)="confirmPayment()">Fizetés megerősítése</button>
+      <button class="close-modal" (click)="showModal = false">Mégse</button>
+    </div>
+  </div>
+  

@@ -1,1 +1,39 @@
-<p>kosar works!</p>
+<div class="cart-container">
+    <h1>Kosár</h1>
+
+    <div class="cart-grid" *ngIf="cart.length > 0">
+      <div *ngFor="let item of cart; let i = index" class="cart-item">
+        <div class="cart-card">
+          <h2 class="item-name">{{ item.name }}</h2>
+          <img *ngIf="item.image" [src]="item.image" alt="{{ item.name }}" class="cart-item-image" />
+          <p class="item-category">Kategória: {{ item.category }}</p>
+          <p class="item-price">Ár: {{ item.price | currency: 'HUF '}}</p>
+          <p class="item-quantity">Mennyiség: {{ item.quantity}}</p>
+          <p class="item-total-price">Összesen: {{ (item.price * item.quantity) | currency: 'HUF ' }}</p>
+          <button class="remove-button" (click)="removeFromCart(i)">Eltávolítás</button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="cart.length === 0" class="empty-cart">
+      <p>A kosár üres!</p>
+      <button class="back-to-products" (click)="goToProducts()">Vissza a termékekhez</button>
+    </div>
+
+
+    <div *ngIf="cart.length > 0" class="cart-actions">
+      <div class="button-container">
+        <button class="checkout-button" (click)="proceedToCheckout()">Fizetés</button>
+        <button class="clear-cart-button" (click)="clearCart()">Kosár törlése</button>
+      </div>
+    </div>
+</div>
+<footer>
+    <div class="footer-content">
+        <div class="contact-info">
+            <h3>Kapcsolat</h3>
+            <p><strong>Telefon:</strong> +36 00 000 000</p>
+            <p><strong>Email:</strong> info&#64;webshop.hu</p>
+        </div>
+        
+    </div>
+    </footer>

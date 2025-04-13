@@ -1,1 +1,82 @@
-<p>profile works!</p>
+<body>
+    <div class="profile-container">
+      <div class="profile-card">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Felhasználói fiók</mat-card-title>
+          </mat-card-header>
+  
+          <mat-card-content>
+            <div class="profile-info">
+              <div class="avatar-container">
+                <div class="avatar mat-elevation-z2">
+                  {{ ProfileObject[selectedIndex]?.avatar }}
+                </div>
+              </div>
+              <div class="user-details">
+                <h3 class="user-name">
+                  {{ userName }}
+                </h3>
+                <div class="user-email">
+                  <mat-icon>email</mat-icon>
+                  <span>{{ userEmail }}</span>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+  
+      <div class="profile-card">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Rendelések</mat-card-title>
+          </mat-card-header>
+  
+          <mat-card-content>
+            <div class="profile-info">
+              <div class="user-details">
+                <h3 class="user-name">Rendeléseid</h3>
+                <div class="user-email">
+                  <mat-icon>sort</mat-icon>
+                  <span>Még nincs</span>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+  
+  
+      <div class="profile-card">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Beállítások</mat-card-title>
+          </mat-card-header>
+  
+          <mat-card-content>
+            <div class="profile-info">
+              <div class="user-details">
+                <h3 class="user-name">Fiók beállításai</h3>
+                <div class="user-email">
+                  <mat-icon>settings</mat-icon>
+                  <span>Még nincs</span>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </body>
+  <footer>
+    <div class="footer-content">
+        <div class="contact-info">
+            <h3>Kapcsolat</h3>
+            <p><strong>Telefon:</strong> +36 00 000 0000</p>
+            <p><strong>Email:</strong> info&#64;webshop.hu</p>
+        </div>
+       
+    </div>
+  </footer>
+  

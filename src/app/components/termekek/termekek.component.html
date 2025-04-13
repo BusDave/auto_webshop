@@ -1,1 +1,40 @@
-<p>termekek works!</p>
+<body>
+    <div class="product-list">
+        <div class="header-container">
+            <h1>Termékek</h1>
+            <input type="text" [(ngModel)]="searchTerm" placeholder="Keresés..." class="search-box">
+            <select [(ngModel)]="selectedCategory" class="category-filter">
+            <option value="">Összes</option>
+            <option *ngFor="let category of uniqueCategories" [value]="category">{{ category }}</option>
+            </select>
+        </div>
+        
+        <div class="grid-container">
+            <mat-card *ngFor="let product of filteredProducts()" class="product-card">
+            <img [src]="product.image" alt="{{ product.name }}" />
+            <mat-card-title>{{ product.name }}</mat-card-title>
+            <mat-card-content>
+                <p>Kategória: {{ product.category }}</p>
+                <p>Ár: {{ product.price | price }}</p>
+                <label [for]="'quantity-' + product.id">Mennyiség:</label>
+                <input type="number" [id]="'quantity-' + product.id" min="1" [(ngModel)]="product.selectedQuantity" />
+            </mat-card-content>
+            <button mat-raised-button color="accent" (click)="addToCart(product)">Kosárba</button>
+            </mat-card>
+        </div>
+        <div *ngIf="filteredProducts().length === 0" class="no-results">
+            <p>Nincs találat a keresési feltételek alapján.</p>
+        </div>
+        <button class="kosarMegtekintes" mat-raised-button color="primary" [routerLink]="'/kosar'">Kosár megtekintése</button>
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <h3>Kapcsolat</h3>
+                <p><strong>Telefon:</strong> +36 00 000 0000</p>
+                <p><strong>Email:</strong> info&#64;webshop.hu</p>
+            </div>
+            
+        </div>
+    </footer>
+</body>

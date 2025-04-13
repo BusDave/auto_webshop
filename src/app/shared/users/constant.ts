@@ -6,6 +6,6 @@ export const ProfileObject = [
       firstname: 'Példa',
       lastname: 'Név'
     },
-    avatar: 'X)', 
+    avatar: '( ͡° ʖ̯ ͡°)', 
   }
 ];
