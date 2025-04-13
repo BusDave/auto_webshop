@@ -1,0 +1,116 @@
+/* Alap lista stílusok */
+mat-nav-list {
+    background-color: #f9f9f9; // világos szürkés háttér
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Listaelemek alap stílusai */
+  mat-nav-list a {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    text-decoration: none;
+    color: #3c3c3c; // sötétszürke szöveg
+    font-size: 17px;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    margin: 8px 0;
+    background-color: #ffffff; // fehér kártya stílus
+  }
+  
+  /* Hover effektus */
+  mat-nav-list a:hover {
+    background-color: #ffecec; // halvány pirosas háttér
+    color: #b71c1c; // piros szöveg
+    transform: scale(1.03);
+    box-shadow: 0 6px 14px rgba(183, 28, 28, 0.15);
+  }
+  
+  /* Aktív elem */
+  mat-nav-list a.active-list-item {
+    background-color: #d32f2f; // erősebb piros
+    color: #fff;
+    transform: scale(1.03);
+  }
+  
+  /* Ikon stílus */
+  mat-nav-list mat-icon {
+    margin-right: 16px;
+    color: inherit;
+    font-size: 22px;
+    transition: color 0.3s ease;
+  }
+  
+  /* Hover ikon */
+  mat-nav-list a:hover mat-icon {
+    color: #b71c1c;
+  }
+  
+  /* Kiemelt linkek */
+  mat-nav-list a[routerLink='/profile'],
+  mat-nav-list a[routerLink='/login'] {
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  
+  /* Szöveg stílus */
+  mat-nav-list span {
+    flex: 1;
+    font-weight: 400;
+    font-size: 17px;
+    text-transform: capitalize;
+    transition: color 0.3s ease;
+  }
+  
+  /* Hover árnyék duplázás törlése (redundáns volt) */
+  mat-nav-list a:hover {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Közepes kijelzőkhöz */
+  @media (min-width: 601px) and (max-width: 900px) {
+    mat-nav-list {
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    }
+  
+    mat-nav-list a {
+      padding: 14px 18px;
+      font-size: 16px;
+    }
+  
+    mat-nav-list mat-icon {
+      font-size: 22px;
+    }
+  
+    mat-nav-list span {
+      font-size: 16px;
+    }
+  }
+  
+  /* Nagy kijelzőkhöz */
+  @media (min-width: 901px) {
+    mat-nav-list {
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  
+    mat-nav-list a {
+      padding: 16px 20px;
+      font-size: 17px;
+    }
+  
+    mat-nav-list mat-icon {
+      font-size: 24px;
+    }
+  
+    mat-nav-list span {
+      font-size: 17px;
+    }
+  }
+  

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<body>
+    <div class="home">
+        <section class="hero">
+          <h1>Üdvözlünk Boltunkban!</h1>
+          <p>Vásárolj minőségi alkatrészeket autódhoz!</p>
+        </section>
+    
+        <section class="gallery">
+          <h2>Alkatrészeink!</h2>
+          <div class="gallery-container">
+            <div class="gallery-scroll">
+              <mat-card *ngFor="let image of images">
+                <img mat-card-image [src]="image.src" [alt]="image.alt" />
+                <mat-card-content>
+                  <p>{{ image.alt }}</p>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+        </section>
+    
+        <section class="contact">
+            <div class="contact-wrapper">
+              <div class="contact-left">
+                <h2>Kapcsolatfelvétel</h2>
+                <form class="contact-form">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Név</mat-label>
+                    <input matInput placeholder="Add meg a neved" />
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Email cím</mat-label>
+                    <input matInput type="email" placeholder="Add meg az email címed" />
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Üzenet</mat-label>
+                    <textarea matInput placeholder="Írd be az üzeneted"></textarea>
+                  </mat-form-field>
+                  <button mat-raised-button color="primary" type="submit">Küldés</button>
+                </form>
+              </div>
+            </div>
+          </section>
+          
+    </div>
+<footer>
+<div class="footer-content">
+    <div class="contact-info">
+        <h3>Kapcsolat</h3>
+        <p><strong>Telefon:</strong> +36 00 000 0000</p>
+        <p><strong>Email:</strong> info&#64;webshop.hu</p>
+    </div>
+   
+    
+</div>
+</footer>
+</body>

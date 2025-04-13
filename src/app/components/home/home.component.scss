@@ -1,0 +1,219 @@
+.home {
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .hero {
+    background: linear-gradient(135deg, #5c2a2a, #7d3c3c); // pirosas gradiens
+    padding: 40px;
+    margin-bottom: 40px;
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(92, 42, 42, 0.3);
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  
+  /* Galéria szekció */
+  .gallery {
+    margin: 40px 0;
+    background-color: #f3f3f3; // világos szürke
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .gallery-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 5px;
+    border-radius: 10px;
+  }
+  
+  .gallery-scroll {
+    display: flex;
+    gap: 20px;
+    /* animation: scroll 25s linear infinite;  <-- EZT TÖRÖLD */
+    transition: all 0.5s ease;
+  }
+  
+  
+  mat-card {
+    min-width: 250px;
+    max-width: 300px;
+    flex-shrink: 0;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background-color: #fff5f5; // halvány rózsaszínes
+    box-shadow: 0 4px 10px rgba(183, 28, 28, 0.1);
+  }
+  
+  mat-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(183, 28, 28, 0.2);
+  }
+  
+  mat-card img {
+    height: 180px;
+    object-fit: contain;
+    background-color: transparent;
+    padding: 8px;
+  }
+  
+  mat-card-content {
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  /* Kapcsolat szekció */
+  .contact {
+    background-color: #f2dede;
+    padding: 40px 0;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .contact-wrapper {
+    display: flex;
+    max-width: 900px;
+    width: 100%;
+    padding: 0 20px;
+  }
+  
+  .contact-left {
+    flex: 1;
+    max-width: 400px;
+  }
+  
+  .contact-form {
+    display: grid;
+    gap: 16px;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fffafa;
+  }
+  
+  .contact-form button {
+    background-color: #c0392b;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1.05rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s ease;
+  }
+  
+  .contact-form button:hover {
+    background-color: #e74c3c;
+    transform: translateY(-2px);
+  }
+  
+  /* Mobilnézet: középre igazítás */
+  @media (max-width: 768px) {
+    .contact-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .contact-left {
+      max-width: 100%;
+    }
+  }
+  
+  
+  /* Lábléc */
+  footer {
+    margin-top: 100px;
+    padding: 20px;
+    background: #7d3c3c;
+    color: white;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .footer-content div {
+    flex: 1 1 30%;
+    margin: 10px;
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+  }
+  
+  .contact-info h3, .social-media h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .social-link {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  
+  .social-link:hover {
+    text-decoration: underline;
+  }
+  
+ 
+  
+  /* Mobilnézet */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 20px;
+    }
+  
+    .hero h1 {
+      font-size: 2rem;
+    }
+  
+    .gallery-container {
+      padding: 0 10px;
+    }
+  
+    .gallery-scroll {
+      animation: scroll 35s linear infinite;
+    }
+  
+    .contact-form {
+      padding: 10px;
+    }
+  
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .footer-content div {
+      margin-bottom: 20px;
+    }
+  }
+  
