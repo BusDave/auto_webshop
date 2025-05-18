@@ -8,7 +8,7 @@
         <mat-toolbar color="primary" class="navbar">
           <span class="logo">InterCars</span>
           <span class="logo">
-            <img src="../assets/car.jpg" alt="Logo" class="logo-icon" />
+            <img src="car.jpg" width="15%" height="10%" alt="Logo" class="logo-icon" />
           </span>          
           <span class="spacer"></span>
           <button 
@@ -24,6 +24,8 @@
               <button mat-button routerLink="/kosar" class="nav-button">Kosár</button>
               @if (isLoggedIn) {
                 <button mat-button routerLink="/profile" class="nav-button">Profil</button>
+                <button mat-button routerLink="/admin" class="nav-button">Admin</button>
+
               }
               @if (isLoggedIn) {
                 <button mat-button routerLink="/login" class="nav-button" (click)="logout()">Kijelentkezés</button>

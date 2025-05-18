@@ -16,6 +16,10 @@
         <mat-icon matListItemIcon>people</mat-icon>
         <span matListItemTitle>Profil</span>
       </a>
+      <a mat-list-item routerLink="/admin" routerLinkActive="active-list-item" (click)="closeMenu()">
+        <mat-icon matListItemIcon>supervised_user_circle</mat-icon>
+        <span matListItemTitle>admin</span>
+      </a>
     }
     @if (!isLoggedIn) {
       <a mat-list-item routerLink="/login" routerLinkActive="active-list-item" (click)="closeMenu()">

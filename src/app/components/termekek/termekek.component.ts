@@ -75,6 +75,20 @@ export class ProductListComponent implements OnInit {
   
     this.snackBar.open(`${product.name} hozzáadva a kosárhoz.`, 'OK', { duration: 3000 });
   }
+
+  getCategoryCounts(): { [key: string]: number } {
+    const counts: { [key: string]: number } = {};
+    for (let i = 0; i < this.products.length; i++) {
+      const category = this.products[i].category;
+      if (!counts[category]) {
+        counts[category] = 1;
+      } else {
+        counts[category]++;
+      }
+    }
+    return counts;
+  }
+  
   
 
   private isLocalStorageAvailable(): boolean {

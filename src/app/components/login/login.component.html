@@ -1,6 +1,14 @@
 <div class="login-container">
     <h1>Bejelentkezés</h1>
-    <form [hidden]="!showLoginForm" (ngSubmit)="login()" class="login-form">
+
+    @if (isLoading) {
+      <div class="loading-container">
+        <h2>Login in progress</h2>
+        <mat-spinner diameter="50"></mat-spinner>
+        <p>Please wait...</p>
+      </div>
+    }
+    <form [hidden]="!showLoginForm" (ngSubmit)="login2()" class="login-form">
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input matInput type="email" placeholder="pelda@gmail.com" [formControl]="email">
