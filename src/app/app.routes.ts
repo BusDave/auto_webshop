@@ -8,17 +8,18 @@ import { AdminComponent } from './components/admin/admin.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { authGuard, publicGuard } from './shared/guards/auth/auth.guard';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' }, 
     { path: 'home', component: HomeComponent },
     { path: 'termekek', component: ProductListComponent },
    // { path: 'products/:id', component: ProductDetailComponent },
-   { path: 'kosar', component: CartComponent },
+   { path: 'kosar', component: CartComponent},
 
     { path: 'fizetes', component: CheckoutComponent },
-    { path: 'admin', component: AdminComponent },
-    { path: 'profile', component: ProfileComponent },
-    { path: 'signup', component: SignupComponent }, 
-    { path: 'login', component: LoginComponent }
+    { path: 'admin', component: AdminComponent, canActivate: [authGuard] },
+    { path: 'profile', component: ProfileComponent, canActivate: [authGuard] },
+    { path: 'signup', component: SignupComponent ,canActivate: [publicGuard]}, 
+    { path: 'login', component: LoginComponent ,canActivate: [publicGuard]}
 ];

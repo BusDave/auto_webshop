@@ -8,7 +8,7 @@
         <p>Please wait...</p>
       </div>
     }
-    <form [hidden]="!showLoginForm" (ngSubmit)="login2()" class="login-form">
+    <form [hidden]="!showLoginForm" (ngSubmit)="login()" class="login-form">
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>
         <input matInput type="email" placeholder="pelda@gmail.com" [formControl]="email">

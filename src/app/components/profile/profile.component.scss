@@ -139,9 +139,28 @@
       grid-template-columns: 1fr;
       gap: 16px;
     }
-  
+    .edit-form {
+      margin-top: 1rem;
+      padding: 0.5rem;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+    
+      button {
+        margin: 0 0.5rem;
+      }
+    }
+    
     .stats-cards {
       flex-direction: column;
     }
+    .order-item-image mat-card-content{
+      width: 60px !important;
+      height: 60px !important;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    
+    
+    
   }
   

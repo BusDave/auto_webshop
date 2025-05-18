@@ -34,16 +34,44 @@
           </mat-card-header>
   
           <mat-card-content>
-            <div class="profile-info">
-              <div class="user-details">
-                <h3 class="user-name">Rendeléseid</h3>
-                <div class="user-email">
-                  <mat-icon>sort</mat-icon>
-                  <span>Még nincs</span>
-                </div>
+            <div *ngFor="let order of orders; let i = index" class="order">
+              <p>Rendelés dátuma: {{ order.date | date:'short' }}</p>
+            
+              <ul>
+                <li *ngFor="let item of order.items" class="order-item">
+                  <img [src]="item.image" width="15%" alt="{{ item.name }}" class="order-item-image" />
+                  <span>{{ item.name }} - {{ item.price }} Ft</span>
+            
+                  <!-- Ha szerkesztés alatt van ez a rendelés -->
+                  <div *ngIf="editingOrderIndex === i">
+                    <button (click)="decreaseItemQuantity(item)">-</button>
+                    <span>{{ item.quantity }}</span>
+                    <button (click)="increaseItemQuantity(item)">+</button>
+                  </div>
+                  <!-- Ha nem szerkesztés alatt van -->
+                  <div *ngIf="editingOrderIndex !== i">
+                    <span>{{ item.quantity }} db</span>
+                  </div>
+                </li>
+              </ul>
+            
+              <!-- Gombok -->
+              <div *ngIf="editingOrderIndex === i">
+                <button (click)="saveEditedOrder(order)">Mentés</button>
+                <button (click)="cancelEditing()">Mégse</button>
+              </div>
+              <div *ngIf="editingOrderIndex !== i">
+                <button (click)="startEditing(i)">Módosítás</button>
+                <button (click)="onDeleteOrder(order)">Törlés</button>
               </div>
             </div>
+            
+            <ng-template #noOrders>
+              <p>Még nincs rendelésed.</p>
+            </ng-template>
           </mat-card-content>
+          
+          
         </mat-card>
       </div>
   

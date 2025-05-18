@@ -1,5 +1,13 @@
 <div class="signup-container">
     <h1>Regisztráció</h1>
+    
+    @if (isLoading) {
+      <div class="loading-container">
+        <h2>Login in progress</h2>
+        <mat-spinner diameter="50"></mat-spinner>
+        <p>Please wait...</p>
+      </div>
+    }
     <form [hidden]="!showForm" [formGroup]="signUpForm" (ngSubmit)="signup()" class="signup-form">
       <mat-form-field appearance="outline">
         <mat-label>Email</mat-label>

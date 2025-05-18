@@ -6,8 +6,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MenuComponent } from './shared/menu/menu.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { AuthService } from './shared/services/auth.service';
 import { Router } from '@angular/router';
-import { filter } from 'rxjs';
+import { filter, Subscription } from 'rxjs';
+import { OnDestroy } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
@@ -24,27 +27,39 @@ import { filter } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   title(title: any) {
     throw new Error('Method not implemented.');
   }
   isLoggedIn = false;
   isHomePage = false;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef, private router: Router) {}
+  constructor(private changeDetectorRef: ChangeDetectorRef,  private authService: AuthService // 👈
+    , private router: Router) {}
 
-  ngOnInit(): void {
-    this.checkLoginStatus();
+    private authSubscription?: Subscription;
 
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
+    ngOnInit(): void {
+      this.authSubscription = this.authService.currentUser.subscribe(user => {
+        this.isLoggedIn = !!user;
+    
+        // 💡 Ellenőrizd, hogy van-e window és localStorage
+        if (typeof window !== 'undefined' && window.localStorage) {
+          localStorage.setItem('isLoggedIn', this.isLoggedIn ? 'true' : 'false');
+        }
+    
+        this.changeDetectorRef.detectChanges();
+      });
+    
+      this.router.events.pipe(
+        filter(event => event instanceof NavigationEnd)
+      ).subscribe(() => {
+        this.checkIfHomePage();
+      });
+    
       this.checkIfHomePage();
-      this.checkLoginStatus(); 
-    });
-
-    this.checkIfHomePage();
-  }
+    }
+    
 
   checkLoginStatus(): void {
     if (typeof window !== 'undefined' && window.localStorage) {
@@ -58,13 +73,14 @@ export class AppComponent implements OnInit {
   }
 
   logout(): void {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      localStorage.setItem('isLoggedIn', 'false');
-    }
-    this.isLoggedIn = false;
-    this.changeDetectorRef.detectChanges(); 
-    window.location.href = '/login'; 
+    this.authService.signOut().then(() => {
+      this.isLoggedIn = false;
+      this.changeDetectorRef.detectChanges();
+    }).catch((error) => {
+      console.error('Hiba a kijelentkezéskor:', error);
+    });
   }
+  
 
   login(): void {
     if (typeof window !== 'undefined' && window.localStorage) {
@@ -77,5 +93,8 @@ export class AppComponent implements OnInit {
 
   onToggleSidenav(sidenav: MatSidenav) {
     sidenav.toggle();
+  }
+  ngOnDestroy(): void {
+    this.authSubscription?.unsubscribe();
   }
 }

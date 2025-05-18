@@ -1,1 +1,26 @@
-<p>admin works!</p>
+<h2>Feedback keresés email alapján(rendes példa: "valami&#64;gmail.com")</h2>
+
+<input [formControl]="emailControl" placeholder="Email" />
+<button (click)="loadFeedbackByEmail()">Keresés</button>
+<pre>{{ feedbacks | json }}</pre>
+
+<hr />
+
+<h2>Feedback keresés időintervallumban (pl. "2023-01-01,2023-12-31")</h2>
+<input [formControl]="dateControl" placeholder="Kezdő dátum, Záró dátum" />
+<button (click)="loadFeedbackByDateRange()">Keresés</button>
+<pre>{{ recentLongFeedbacks | json }}</pre>
+
+<hr />
+
+<h2>Users keresése terméknév alapján</h2>
+<input #productNameInput placeholder="Terméknév" />
+<button (click)="loadUsersByProductName(productNameInput.value)">Keresés</button>
+<pre>{{ users | json }}</pre>
+
+<hr />
+
+<h2>Rendelések keresése email alapján</h2>
+<input [formControl]="emailControl" placeholder="Email" />
+<button (click)="loadOrdersByUserEmail()">Keresés</button>
+<pre>{{ ordersAfterDate | json }}</pre>
