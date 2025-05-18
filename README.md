@@ -4,8 +4,7 @@
 
 Kedves Javitó(k)!
 
-Valamely oldalak direkt nincsenek még teljesen megvalósítva, majd a 2. mérföldköre lesznek készek.
-
+Az admin felület minden user számára nyitott, hogy elkerüljem a belépési kellemetlenségeket.
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.6.
 
 ## Development server
